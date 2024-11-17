@@ -10,6 +10,12 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        orange:'var(--orange)',
+        darkOrange: 'var(--darkOrange)',
+      },
+      screens: {
+        md: "769px",
+        ia: "821px"
       },
     },
   },
