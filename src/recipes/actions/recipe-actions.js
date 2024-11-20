@@ -1,10 +1,16 @@
-'use server'
+"use server";
+
+// import { PrismaClient } from "@prisma/client";
+// const prisma = new PrismaClient();
 
 import prisma from "@/lib/prisma";
 
-export const getRecipes = async () => {
+export const getRecipes = async (searchStr) => {
   try {
-    const recipes = await prisma.recipe.findMany();
+    const recipes = await prisma.recipe.findMany({
+      orderBy: { name: "asc" },
+      where: { name: { contains: searchStr, mode: "insensitive" } },
+    });
     return recipes;
   } catch (error) {
     console.error("Error fetching recipes:", error);
@@ -65,7 +71,7 @@ export const removeRecipeFromServer = async (id) => {
   try {
     const deletedRecipe = await prisma.recipe.delete({
       where: {
-        id,
+        id: id,
       },
     });
     return deletedRecipe;

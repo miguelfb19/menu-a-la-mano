@@ -1,7 +1,6 @@
 import { getRecipes } from "@/recipes/actions/recipe-actions";
 import { RandomRecipe } from "@/components";
 
-
 export const metadata = {
  title: 'Menú aleatorio',
  description: 'Generación de un menú aleatorio',

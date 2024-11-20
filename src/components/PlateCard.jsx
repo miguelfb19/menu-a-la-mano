@@ -6,28 +6,33 @@ import {
   inputPassword,
   successSubmit,
   deniedPassword,
-  confirmPassword,
 } from "@/recipes/alerts";
 
 import { MdOndemandVideo } from "react-icons/md";
 import { GoPencil } from "react-icons/go";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export const PlateCard = ({
   recipe,
-  deleteRecipe = false,
   password = "",
   removeRecipe = () => {},
 }) => {
+  const router = useRouter();
 
   const handleDelete = async () => {
-    const digitedPassword = await inputPassword();
+    const digitedPassword = await inputPassword('eliminar');
+
     if (digitedPassword == password) {
-      confirmPassword();
-      removeRecipe(recipe.id);
-      successSubmit("Receta eliminada correctamente");
-      redirect("/recipes");
+      try {
+        removeRecipe(recipe.id);
+        successSubmit("Receta eliminada correctamente");
+        router.refresh();
+        return
+      } catch (error) {
+        console.error("Error al eliminar la receta:", error);
+        throw error;
+      }
     }
     deniedPassword();
     return;
@@ -62,31 +67,29 @@ export const PlateCard = ({
             ))}
           </p>
           <span id="space-after-p" className="flex flex-1"></span>
-          {deleteRecipe ? (
+
+          <div id="icons" className="flex justify-around items-center">
+            {(recipe.video != "" || recipe.video) && (
+              <Link
+                href={recipe.video}
+                target="_blank"
+                className="text-white hover:text-darkOrange"
+              >
+                <MdOndemandVideo size={50} />
+              </Link>
+            )}
+            <Link href={`edit-recipe/${recipe.id}`}>
+              <GoPencil
+                size={40}
+                className="text-white hover:text-darkOrange"
+              />
+            </Link>
             <div className="flex text-white justify-center hover:text-darkOrange">
               <button onClick={handleDelete}>
-                <RiDeleteBinLine size={40} />
+                <RiDeleteBinLine size={45} />
               </button>
             </div>
-          ) : (
-            <div id="icons" className="flex justify-around items-center">
-              {(recipe.video != "" || recipe.video) && (
-                <Link
-                  href={recipe.video}
-                  target="_blank"
-                  className="text-white hover:text-darkOrange"
-                >
-                  <MdOndemandVideo size={50} />
-                </Link>
-              )}
-              <Link href={`edit-recipe/${recipe.id}`}>
-                <GoPencil
-                  size={40}
-                  className="text-white hover:text-darkOrange"
-                />
-              </Link>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

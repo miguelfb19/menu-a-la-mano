@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   {
@@ -26,8 +27,13 @@ const menuItems = [
 
 export const TopMenu = () => {
   const [openMenu, setOpenMenu] = useState(true);
+  const [searchStr, setSearchStr] = useState("");
+  const router = useRouter()
 
-  
+  const onSubmitSearch = (e) => {
+    e.preventDefault();
+    router.push(`/recipes?search=${searchStr}`)
+  };
   
 
   return (
@@ -50,33 +56,37 @@ export const TopMenu = () => {
               </li>
             ))}
           </ul>
-          <div
+          <form
+          onSubmit={onSubmitSearch}
             id="search-bar"
             className="flex items-center max-w-md mx-8 bg-white rounded-lg"
           >
             <div className="w-full">
               <input
+                onChange={(e) => {
+                  setSearchStr(e.target.value);
+                }}
                 type="search"
                 className="w-full px-4 text-darkOrange rounded-full focus:outline-none appearance-none"
-                placeholder="buscar receta"
+                placeholder="Buscar receta"
                 x-model="search"
               />
             </div>
             <div>
               <button
                 type="submit"
-                className="flex items-center bg-darkOrange justify-center w-12 h-8 text-white rounded-r-lg"
+                className="flex items-center bg-darkOrange justify-center w-12 h-8 text-white rounded-r-lg active:bg-orange"
               >
                 <IoIosSearch size={20} />
               </button>
             </div>
-          </div>
+          </form>
         </div>
         <div id="hamburger" className="flex items-start md:hidden md:order-2">
           <button
             onClick={() => setOpenMenu(!openMenu)}
             type="button"
-            className="md:hidden text-white active:text-darkOrange focus:outline-none rounded-lg inline-flex items-center justify-center"
+            className="md:hidden text-white active:text-darkOrange hover:text-darkOrange focus:outline-none rounded-lg inline-flex items-center justify-center"
           >
             <GiHamburgerMenu size={30} />
           </button>

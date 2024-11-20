@@ -1,5 +1,4 @@
 import { RecipeForm } from "@/components";
-import { redirect } from "next/navigation";
 import { addRecipe } from "@/recipes/actions/recipe-actions";
 
 export const metadata = {
@@ -12,12 +11,13 @@ export const metadata = {
 
 export default function AddRecipePage() {
 
+  const password = process.env.ADMIN_PASSWORD
   
   const handleAddRecipe = async (data) => {
     "use server";
     try {
       await addRecipe(data);
-      redirect("/recipes");
+      return
     } catch (error) {
       console.log("Error al agregar la receta en la base de datos:", error);
       throw error;
@@ -30,7 +30,7 @@ export default function AddRecipePage() {
         agregar nueva receta
       </h1>
       <div className="mx-auto w-full max-w-[550px]">
-        <RecipeForm handleCreateRecipe={handleAddRecipe} />
+        <RecipeForm handleCreateRecipe={handleAddRecipe} password={password}/>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import { RecipeForm } from "@/components";
 import { getSingleRecipe, updateRecipe } from "@/recipes/actions/recipe-actions";
-import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Editar receta",
@@ -12,16 +11,16 @@ export const metadata = {
 
 export default async function EditRecipePage({ params }) {
   const { id } = await params;
-
+  const password = process.env.ADMIN_PASSWORD;
   const recipe = await getSingleRecipe(id);
 
-  const editRecipe = async (formData) => {
+  const onEditRecipe = async (formData) => {
     "use server";
    try {
     await updateRecipe(id, formData)
-    redirect('/recipes')
+    return
    } catch (error) {
-    console.log('Error al guardar la receta en la base de datos:', error)
+    console.error('Error al guardar la receta en la base de datos:', error)
     throw error
    }
   };
@@ -35,7 +34,8 @@ export default async function EditRecipePage({ params }) {
         <RecipeForm
           isEditing
           editedRecipe={recipe}
-          handleEditRecipe={editRecipe}
+          handleEditRecipe={onEditRecipe}
+          password={password}
         />
       </div>
     </div>

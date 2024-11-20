@@ -2,19 +2,26 @@
 
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
-import { successSubmit, errorSubmit } from "@/recipes/alerts";
-
+import {
+  successSubmit,
+  errorSubmit,
+  inputPassword,
+  deniedPassword,
+} from "@/recipes/alerts";
+import { useRouter } from "next/navigation";
 
 export const RecipeForm = ({
   editedRecipe = {},
   isEditing = false,
   handleCreateRecipe = () => {},
   handleEditRecipe = () => {},
+  password,
 }) => {
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [video, setVideo] = useState('');
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [video, setVideo] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter()
 
   useEffect(() => {
     getRecipeToEdit();
@@ -22,7 +29,7 @@ export const RecipeForm = ({
   }, []);
 
   const resetForm = () => {
-    setLoading(false)
+    setLoading(false);
     setName("");
     setIngredients("");
     setVideo("");
@@ -30,36 +37,46 @@ export const RecipeForm = ({
 
   const getRecipeToEdit = () => {
     if (isEditing) {
-      setName(editedRecipe.name || "");
-      setIngredients(editedRecipe.ingredients || "");
-      setVideo(editedRecipe.video || "");
+      setName(editedRecipe.name);
+      setIngredients(editedRecipe.ingredients);
+      setVideo(editedRecipe.video);
     }
   };
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      name: name.trim().toLocaleLowerCase(),
-      ingredients: isEditing
-        ? ingredients
-        : ingredients.split(",").map((item) => item.trim()),
-      video: video.trim(),
-    };
-    try {
-      if (isEditing) {
-        handleEditRecipe(formData);
-        successSubmit('Receta editada correctamente');
+    const digitedPassword = await (isEditing ? inputPassword('editar') : inputPassword('agregar'))
+
+    if (digitedPassword == password) {
+      const formData = {
+        name: name.trim().toLowerCase(),
+        ingredients: Array.isArray(ingredients)
+          ? ingredients
+          : ingredients.split(",").map((item) => item.trim()),
+        video: video.trim(),
+      };
+      try {
+        if (isEditing) {
+          handleEditRecipe(formData);
+          successSubmit("Receta editada correctamente");
+          resetForm();
+          router.push('/recipes')
+          return;
+        }
+        handleCreateRecipe(formData);
+        successSubmit("Receta guardada correctamente");
         resetForm();
+        router.push('/recipes')
         return;
+      } catch (error) {
+        errorSubmit("Error al guardar la receta");
+        console.error("Error al guardar la receta:");
+        throw error;
       }
-      handleCreateRecipe(formData);
-      successSubmit('Receta guardada correctamente');
-      resetForm()
-      return;
-    } catch {
-      errorSubmit('Error al guardar la receta');
     }
+    deniedPassword();
+    return;
   };
 
   // TODO: Cuando borro el campo de name para cambiarlo se carga el spinner
@@ -126,7 +143,7 @@ export const RecipeForm = ({
                 type="text"
                 name="video"
                 id="video"
-                placeholder="Enter your subject"
+                placeholder="Tutorial de YouTube (opcional)"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-orange focus:shadow-md"
               />
             </div>
