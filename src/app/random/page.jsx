@@ -12,8 +12,8 @@ export default async function RandomPage() {
   const recipes = await getRecipes();
 
   return (
-    <>
+    <section className="my-10">
       <RandomRecipe recipes={recipes}/>
-    </>
+    </section>
   );
 }

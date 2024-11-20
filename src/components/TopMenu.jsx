@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const menuItems = [
   {
@@ -26,21 +26,35 @@ const menuItems = [
 ];
 
 export const TopMenu = () => {
+
+  const searchPath = useSearchParams().size
+  const path = usePathname()
+  
+  useEffect(() => {
+    if(!path.includes('search')){
+      setSearchStr('')
+    }
+  }, [searchPath, path]);
+
   const [openMenu, setOpenMenu] = useState(true);
   const [searchStr, setSearchStr] = useState("");
-  const router = useRouter()
+  const router = useRouter();
 
   const onSubmitSearch = (e) => {
     e.preventDefault();
-    router.push(`/recipes?search=${searchStr}`)
+    router.push(`/recipes?search=${searchStr}`);
   };
-  
 
   return (
     <nav className="border-gray-200 bg-orange">
-      <div id="container" className="max-md:flex-col-reverse max-md:justify-end w-full mx-auto p-5 flex justify-end shadow-2xl">
+      <div
+        id="container"
+        className="max-md:flex-col-reverse max-md:justify-end w-full mx-auto p-5 flex justify-end shadow-2xl"
+      >
         <div
-          className={`"px-2 ${!openMenu ? 'flex flex-col gap-3' : 'hidden'} md:flex justify-between items-center w-full md:w-auto md:order-1 text-white"`}
+          className={`"px-2 ${
+            !openMenu ? "flex flex-col gap-3" : "hidden"
+          } md:flex justify-between items-center w-full md:w-auto md:order-1 text-white"`}
           id="menu-list"
         >
           <ul className="flex-col text-center md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
@@ -57,7 +71,7 @@ export const TopMenu = () => {
             ))}
           </ul>
           <form
-          onSubmit={onSubmitSearch}
+            onSubmit={onSubmitSearch}
             id="search-bar"
             className="flex items-center max-w-md mx-8 bg-white rounded-lg"
           >
@@ -66,6 +80,7 @@ export const TopMenu = () => {
                 onChange={(e) => {
                   setSearchStr(e.target.value);
                 }}
+                value={searchStr}
                 type="search"
                 className="w-full px-4 text-darkOrange rounded-full focus:outline-none appearance-none"
                 placeholder="Buscar receta"

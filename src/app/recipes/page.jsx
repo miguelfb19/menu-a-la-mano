@@ -7,6 +7,8 @@ import {
   getRecipes,
   removeRecipeFromServer,
 } from "@/recipes/actions/recipe-actions";
+import { MdOutlineNotInterested } from "react-icons/md";
+
 
 export const metadata = {
   title: "Todas las recetas",
@@ -17,9 +19,8 @@ export const metadata = {
 };
 
 export default async function RecipesPage({ searchParams }) {
-  console.log(await searchParams)
-
-  const searchStr = await searchParams.search || "";
+  const searchObject = await searchParams;
+  const searchStr = (await searchObject.search) || "";
   const recipes = await getRecipes(searchStr);
   const password = process.env.ADMIN_PASSWORD;
 
@@ -39,15 +40,24 @@ export default async function RecipesPage({ searchParams }) {
   };
 
   return (
-    <div className="flex gap-10 flex-wrap p-10 justify-center">
-      {recipes.map((recipe) => (
-        <PlateCard
-          key={recipe.id}
-          recipe={recipe}
-          password={password}
-          removeRecipe={onDeleteRecipe}
-        />
-      ))}
+    <div>
+      {searchStr != "" && recipes.length == 0 ? (
+        <div className="h-[80vh] w-full flex flex-col text-center justify-center items-center gap-5">
+          <MdOutlineNotInterested size={80} color="darkOrange"/>
+          <span className="text-xl">No hay recetas relacionadas con tu búsqueda, vuelve a intentarlo.</span>
+        </div>
+      ) : (
+        <div className="flex gap-10 flex-wrap p-10 justify-center">
+          {recipes.map((recipe) => (
+            <PlateCard
+              key={recipe.id}
+              recipe={recipe}
+              password={password}
+              removeRecipe={onDeleteRecipe}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

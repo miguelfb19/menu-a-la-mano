@@ -32,7 +32,7 @@ export const RandomRecipe = ({recipes}) => {
       {randomRecipe ? (
         <section
           id="main"
-          className="flex flex-col justify-center items-center h-[80vh] mt-10 max-sm:mb-36"
+          className="flex flex-col justify-center items-center mt-10 max-sm:mb-36"
         >
           <h1 className="uppercase text-3xl font-bold text-darkOrange mb-10 text-center max-sm:mt-20">
             ¡¡¡puedes hacer este plato hoy!!!
