@@ -26,13 +26,11 @@ const menuItems = [
 ];
 
 export const TopMenu = () => {
-
-  const searchPath = useSearchParams().size
-  const path = usePathname()
-  
   useEffect(() => {
-    if(!path.includes('search')){
-      setSearchStr('')
+    const searchPath = useSearchParams().size;
+    const path = usePathname();
+    if (!path.includes("search")) {
+      setSearchStr("");
     }
   }, [searchPath, path]);
 
