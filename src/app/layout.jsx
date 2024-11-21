@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { TopMenu } from "@/components";
 import { Suspense } from "react";
+// el suspense se usa en Next como una manera de manejar el prerenderizado en producción de funcionalidades relacionadas con el cliente, tales como usePathName o useSearchParams
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
