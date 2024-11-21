@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CgSpinner } from "react-icons/cg";
+import { LoadingSpinner } from "./LoadingSpinner";
 import {
   successSubmit,
   errorSubmit,
@@ -79,14 +79,10 @@ export const RecipeForm = ({
     return;
   };
 
-  // TODO: Cuando borro el campo de name para cambiarlo se carga el spinner
-
   return (
     <>
       {!loading ? (
-        <section className="flex flex-col justify-center items-center h-[50vh] text-2xl text-darkOrange">
-          <CgSpinner className="animate-spin duration-200" size={35} />
-        </section>
+        <LoadingSpinner />
       ) : (
         <div>
           <span>
