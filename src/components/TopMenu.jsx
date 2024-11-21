@@ -12,15 +12,15 @@ const menuItems = [
     path: "/home",
   },
   {
-    title: "Todas las recetas",
+    title: "Todos los menús",
     path: "/recipes",
   },
   {
-    title: "Agregar receta",
+    title: "Agregar un menú",
     path: "/add-recipe",
   },
   {
-    title: "Receta aleatoria",
+    title: "Menú aleatoria",
     path: "/random",
   },
 ];
