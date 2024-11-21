@@ -21,15 +21,6 @@ export const metadata = {
   description: "Menús y recetas para cada día en tu hogar",
   icons: {
     icon: "/favicon.svg",
-    // apple: "/favicon-apple.png",
-    // other: [
-    //   {
-    //     rel: "icon",
-    //     type: "image/png",
-    //     sizes: "512x512",
-    //     href: "/favicon-others.png",
-    //   },
-    // ],
   },
 };
 
