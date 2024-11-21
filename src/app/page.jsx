@@ -10,7 +10,5 @@ export const metadata = {
 };
 
 export default function Home() {
-
   redirect('/home')
-  return <div></div>;
 }

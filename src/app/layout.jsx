@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { TopMenu } from "@/components";
+import { FooterComp } from "@/components";
 import { Suspense } from "react";
 // el suspense se usa en Next como una manera de manejar el prerenderizado en producción de funcionalidades relacionadas con el cliente, tales como usePathName o useSearchParams
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         </Suspense>
 
         {children}
+        <FooterComp/>
       </body>
     </html>
   );
