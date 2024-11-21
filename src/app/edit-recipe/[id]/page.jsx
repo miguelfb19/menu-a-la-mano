@@ -28,7 +28,7 @@ export default async function EditRecipePage({ params }) {
   return (
     <div className="flex flex-col items-center justify-center p-12">
       <h1 className="text-5xl font-bold text-center uppercase text-darkOrange mb-10">
-        editar receta
+        editar esta receta
       </h1>
       <div className="mx-auto w-full max-w-[550px]">
         <RecipeForm

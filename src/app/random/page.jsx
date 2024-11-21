@@ -2,8 +2,8 @@ import { getRecipes } from "@/recipes/actions/recipe-actions";
 import { RandomRecipe } from "@/components";
 
 export const metadata = {
- title: 'Menú aleatorio',
- description: 'Generación de un menú aleatorio',
+ title: 'Receta aleatorio',
+ description: 'Generación de una receta aleatoria para preparar en tu casa',
  icons: {
   icon: '/favicon.svg',}
 };

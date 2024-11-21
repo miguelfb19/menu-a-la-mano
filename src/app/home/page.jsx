@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+
+export const metadata = {
+ title: 'Menú a la mano',
+ description: 'Menú a la mano',
+};
+
 export default function HomePage() {
   return (
     <div className="bg-[url('/images/fondo_recetas.png')] bg-cover bg-center h-screen text-white">
@@ -14,7 +20,7 @@ export default function HomePage() {
             el menú de tu hogar diariamente.
           </p>
           <Link href="/random">
-            <button className="btn">Generar menú aleatorio</button>
+            <button className="btn">Generar receta aleatoria</button>
           </Link>
         </section>
       </div>

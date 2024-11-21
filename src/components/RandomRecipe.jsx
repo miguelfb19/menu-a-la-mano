@@ -35,14 +35,14 @@ export const RandomRecipe = ({recipes}) => {
           className="flex flex-col justify-center items-center mt-10 max-sm:mb-36"
         >
           <h1 className="uppercase text-3xl font-bold text-darkOrange mb-10 text-center max-sm:mt-20">
-            ¡¡¡puedes hacer este plato hoy!!!
+            ¡¡¡puedes hacer esta receta hoy!!!
           </h1>
           <PlateCard recipe={randomRecipe} />
           <button
             onClick={newRandom}
             className="btn flex justify-center items-center mt-10 w-[15rem] min-h-12"
           >
-            {check ? <FaCheck size={20} /> : <p>Otro plato</p>}
+            {check ? <FaCheck size={20} /> : <p>Otra receta</p>}
           </button>
         </section>
       ) : (
