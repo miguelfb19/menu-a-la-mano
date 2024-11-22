@@ -131,7 +131,7 @@ export const RecipeForm = ({
                 htmlFor="video"
                 className="mb-3 block text-base font-medium text-darkOrange"
               >
-                video tutorial
+                Video tutorial
               </label>
               <input
                 value={video}
