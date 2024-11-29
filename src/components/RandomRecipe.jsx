@@ -34,7 +34,7 @@ export const RandomRecipe = ({recipes}) => {
           id="main"
           className="flex flex-col justify-center items-center mt-10 max-sm:mb-36"
         >
-          <h1 className="uppercase text-3xl font-bold text-darkOrange mb-10 text-center max-sm:mt-20">
+          <h1 className="uppercase text-3xl font-bold text-darkOrange mb-10 text-center max-sm:mt-0">
             ¡¡¡puedes hacer esta receta hoy!!!
           </h1>
           <PlateCard recipe={randomRecipe} />
