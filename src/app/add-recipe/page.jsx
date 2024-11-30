@@ -25,7 +25,7 @@ export default function AddRecipePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-12">
+    <div className="flex flex-col items-center justify-center p-12 min-h-[80vh]">
       <h1 className="text-5xl font-bold text-center uppercase text-darkOrange mb-10">
         agregar nueva receta
       </h1>

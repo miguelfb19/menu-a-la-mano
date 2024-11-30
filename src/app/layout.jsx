@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           <TopMenu />
         </Suspense>
 
-        {children}
+        <div className="mt-14 md:mt-0">{children}</div>
         <FooterComp />
       </body>
     </html>
