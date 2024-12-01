@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 //Esto hace que esta pagina sea generada dinamicamente siempre
 
-import { PlateCard } from "@/components";
+import { PlateCard, ButtonToTop } from "@/components";
 import {
   getRecipes,
   removeRecipeFromServer,
@@ -58,6 +58,7 @@ export default async function RecipesPage({ searchParams }) {
           ))}
         </div>
       )}
+      <ButtonToTop />
     </div>
   );
 }
