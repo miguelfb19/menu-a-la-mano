@@ -7,7 +7,7 @@ export const metadata = {
     title: "Menú a la mano",
     description:
       "Ya no tienes que pensar el menú de tu hogar diariamente, usa Menú a la mano",
-    images: ["/images/menu_a_la_mano.png"],
+    images: ["/images/open_graph.png"],
   },
 };
 
