@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 //Esto hace que esta pagina sea generada dinamicamente siempre
 
-import { PlateCard, ButtonToTop } from "@/components";
+import { RecipeCard, ButtonToTop } from "@/components";
 import {
   getRecipes,
   removeRecipeFromServer,
@@ -40,7 +40,7 @@ export default async function RecipesPage({ searchParams }) {
   };
 
   return (
-    <div>
+    <div className="fade-in">
       {searchStr != "" && recipes.length == 0 ? (
         <div className="h-[80vh] w-full flex flex-col text-center justify-center items-center gap-5">
           <MdOutlineNotInterested size={80} color="darkOrange"/>
@@ -49,7 +49,7 @@ export default async function RecipesPage({ searchParams }) {
       ) : (
         <div className="flex gap-10 flex-wrap p-10 justify-center">
           {recipes.map((recipe) => (
-            <PlateCard
+            <RecipeCard
               key={recipe.id}
               recipe={recipe}
               password={password}

@@ -12,7 +12,7 @@ export default async function RandomPage() {
   const recipes = await getRecipes();
 
   return (
-    <section className="mt-20 md:my-10 min-h-[80vh] flex flex-col items-center">
+    <section className="fade-in mt-20 md:my-10 min-h-[80vh] flex flex-col items-center">
       <RandomRecipe recipes={recipes}/>
     </section>
   );

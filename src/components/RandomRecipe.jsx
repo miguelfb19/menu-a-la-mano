@@ -2,7 +2,7 @@
 
 import { CgSpinner } from "react-icons/cg";
 import { FaCheck } from "react-icons/fa";
-import { PlateCard } from "@/components";
+import { RecipeCard } from "@/components";
 
 import { useEffect, useState } from "react";
 
@@ -37,7 +37,7 @@ export const RandomRecipe = ({recipes}) => {
           <h1 className="uppercase text-3xl font-bold text-darkOrange mb-10 text-center max-sm:mt-0">
             ¡¡¡puedes hacer esta receta hoy!!!
           </h1>
-          <PlateCard recipe={randomRecipe} />
+          <RecipeCard recipe={randomRecipe} />
           <button
             onClick={newRandom}
             className="btn flex justify-center items-center mt-10 w-[15rem] min-h-12"

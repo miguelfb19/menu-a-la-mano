@@ -26,7 +26,7 @@ export default async function EditRecipePage({ params }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-12">
+    <div className="fade-in flex flex-col items-center justify-center p-12">
       <h1 className="text-5xl font-bold text-center uppercase text-darkOrange mb-10">
         editar esta receta
       </h1>

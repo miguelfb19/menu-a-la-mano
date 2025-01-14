@@ -9,7 +9,7 @@ import { GoPencil } from "react-icons/go";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 
-export const PlateCard = ({
+export const RecipeCard = ({
   recipe,
   password = "",
   removeRecipe = () => {},
@@ -62,7 +62,7 @@ export const PlateCard = ({
                 .join(" ")}
             </h1>
           </div>
-          <p className="text-white font-semibold text-xl tracking-tight max-h-20 overflow-scroll">
+          <p className="custome-scroll text-white font-semibold text-xl tracking-tight max-h-20 overflow-scroll">
             {recipe.ingredients.map((ingredient, index) => (
               <span
                 key={ingredient + index}
