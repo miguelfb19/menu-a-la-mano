@@ -45,6 +45,12 @@ export const metadata = {
         url: "/webmanifest.json",
       },
     ],
+    images: [
+      {
+        url: "/logo.png",
+        alt: "Logo Menú a la mano",
+      },
+    ],
   },
 };
 
