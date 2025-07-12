@@ -21,6 +21,30 @@ export const metadata = {
   description: "Menús y recetas para cada día en tu hogar",
   icons: {
     icon: "/icon.png",
+    apple: "/icon.png",
+    other: [
+      {
+        rel: "shortcut icon",
+        url: "/icon.png",
+      },
+      {
+        rel: "mask-icon",
+        url: "/icon.png",
+        color: "#000000",
+      },
+      {
+        rel: "icon",
+        url: "/icon.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/icon.png",
+      },
+      {
+        rel: "manifest",
+        url: "/webmanifest.json",
+      },
+    ],
   },
 };
 
