@@ -5,7 +5,7 @@ export const metadata = {
  title: 'Receta aleatorio',
  description: 'Generación de una receta aleatoria para preparar en tu casa',
  icons: {
-  icon: '/favicon.svg',}
+  icon: '/icon.png',}
 };
 
 export default async function RandomPage() {

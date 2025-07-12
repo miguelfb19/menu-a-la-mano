@@ -5,7 +5,7 @@ export const metadata = {
  title: 'Menú a la mano',
  description: 'Menú a la mano',
  icons: {
-  icon: '/favicon.svg',
+  icon: '/icon.png',
  }
 };
 

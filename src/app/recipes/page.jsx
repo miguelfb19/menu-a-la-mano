@@ -14,7 +14,7 @@ export const metadata = {
   title: "Todas las recetas",
   description: "Todas las recetas de Menú a la mano en esta página",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icon.png",
   },
 };
 

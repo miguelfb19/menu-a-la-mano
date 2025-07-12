@@ -5,7 +5,7 @@ export const metadata = {
   title: "Editar receta",
   description: "Editar receta",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icon.png",
   },
 };
 

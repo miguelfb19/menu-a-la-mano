@@ -20,7 +20,7 @@ export const metadata = {
   title: "Menú a la mano",
   description: "Menús y recetas para cada día en tu hogar",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icon.png",
   },
 };
 
